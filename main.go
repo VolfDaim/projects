@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
+	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 	"golang.org/x/net/context"
 	"net/http"
@@ -34,7 +35,20 @@ func main() {
 	if err := InitConfig(); err != nil {
 		panic(err)
 	}
-	repos := repository.NewRepository()
+
+	db, error := repository.ConnectDB(repository.Config{
+		Host:     viper.GetString("host"),
+		Port:     viper.GetString("db_port"),
+		Username: viper.GetString("user"),
+		Password: viper.GetString("password"),
+		DBName:   viper.GetString("db_name"),
+		SSLMode:  viper.GetString("slide"),
+	})
+
+	if error != nil {
+		panic(error)
+	}
+	repos := repository.NewRepository(db)
 	service := service2.NewService(repos)
 	handler := handlers.NewHandler(service)
 

@@ -1,8 +1,13 @@
 package service
 
-import "projects/repository"
+import (
+	"projects/models"
+	"projects/repository"
+)
 
 type User interface {
+	Create(user models.User) (int, error)
+	GetAll() ([]models.User, error)
 }
 
 type Service struct {
@@ -10,5 +15,7 @@ type Service struct {
 }
 
 func NewService(repos *repository.Repository) *Service {
-	return &Service{}
+	return &Service{
+		User: NewUserService(repos),
+	}
 }
