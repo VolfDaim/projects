@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	_ "projects/docs"
 	"projects/service"
 )
 
@@ -16,11 +15,6 @@ func NewHandler(service *service.Service) *Handler {
 	return &Handler{service: service}
 }
 
-// @title           Avito Tech Test
-// @version         1.0
-// @description		Микросервис для работы с балансом пользователей
-// @host      		localhost:8081
-// @BasePath  /
 func (handler *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

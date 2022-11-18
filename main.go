@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/viper"
 	"golang.org/x/net/context"
 	"net/http"
-	_ "projects/docs"
 	"projects/handlers"
 	"projects/repository"
 	service2 "projects/service"

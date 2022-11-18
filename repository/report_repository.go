@@ -14,11 +14,6 @@ func NewReportRepository(db *sqlx.DB) *ReportRepository {
 	return &ReportRepository{db: db}
 }
 
-// GetUser godoc
-// @Summary Get user
-// @Tags user
-// @Description create user
-// @Router /user [get]
 func (t ReportRepository) GetReport(year int, month int) (string, error) {
 	createQuery := fmt.Sprintf("select * from %s where extract(year from datetime)=$1 and extract(month from datetime)=$2",
 		transactionTable)
