@@ -3,7 +3,6 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	_ "projects/docs"
 	"projects/models"
 	"strconv"
 )
@@ -12,10 +11,6 @@ type GetAllLists struct {
 	Data []models.User `json:"data"`
 }
 
-// @Summary Get user
-// @Tags user
-// @Description create user
-// @Router /user [get]
 func (handler *Handler) GetUser(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 
