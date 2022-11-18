@@ -20,7 +20,6 @@
 ## Запуск приложения:
 ```sh
 docker build -t projects .
-docker run --name=projects -p 8081:8081 projects
 docker-compose up --build projects
 ```
 ## Реализованные API:
