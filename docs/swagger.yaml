@@ -1,0 +1,163 @@
+definitions:
+  models.Transaction:
+    properties:
+      balance:
+        type: integer
+      id:
+        type: integer
+      id_order:
+        type: integer
+      id_service:
+        type: integer
+    type: object
+  models.User:
+    properties:
+      balance:
+        type: integer
+      id:
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: Микросервис для работы с балансом пользователей
+  title: Avito Tech Service
+  version: "1.0"
+paths:
+  /transaction/confirm:
+    post:
+      consumes:
+      - application/json
+      description: Подтвердить перевод и разморозить средства
+      operationId: confirm
+      parameters:
+      - description: Transaction data
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Transaction'
+      produces:
+      - application/json
+      responses: {}
+      summary: Confirm transaction
+      tags:
+      - transaction
+  /transaction/reserve:
+    post:
+      consumes:
+      - application/json
+      description: Заморозить средства пользователя
+      operationId: reserve
+      parameters:
+      - description: Transaction data
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.Transaction'
+      produces:
+      - application/json
+      responses: {}
+      summary: Reserve balance
+      tags:
+      - transaction
+  /transaction/send:
+    post:
+      consumes:
+      - application/json
+      description: Зачислить средства на счет пользователя
+      operationId: send
+      parameters:
+      - description: User data
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: Send balance
+      tags:
+      - transaction
+  /user/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete User
+      operationId: Delete-user
+      parameters:
+      - description: user id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete User
+      tags:
+      - user
+    get:
+      description: Get User
+      operationId: get-user
+      parameters:
+      - description: user id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get User
+      tags:
+      - user
+  /user/{id}/balance:
+    get:
+      consumes:
+      - application/json
+      description: Get User Balance
+      operationId: get-user-balance
+      parameters:
+      - description: user id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Get User Balance
+      tags:
+      - user_balance
+  /user/create-user:
+    post:
+      consumes:
+      - application/json
+      description: Create User
+      operationId: create-user
+      parameters:
+      - description: User data
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create User
+      tags:
+      - user
+  /user/users:
+    get:
+      description: Get All Users
+      operationId: get-all-user
+      produces:
+      - application/json
+      responses: {}
+      summary: Get All Users
+      tags:
+      - user
+swagger: "2.0"

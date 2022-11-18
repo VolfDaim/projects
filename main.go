@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/viper"
 	"golang.org/x/net/context"
 	"net/http"
+	_ "projects/docs"
 	"projects/handlers"
 	"projects/repository"
 	service2 "projects/service"
@@ -31,6 +32,9 @@ func (server *Server) Shutdown(ctx context.Context) error {
 	return server.httpServer.Shutdown(ctx)
 }
 
+// @title Avito Tech Service
+// @version 1.0
+// @description Микросервис для работы с балансом пользователей
 func main() {
 	if err := InitConfig(); err != nil {
 		panic(err)
