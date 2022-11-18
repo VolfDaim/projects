@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/viper"
 	"golang.org/x/net/context"
 	"net/http"
+	_ "projects/docs"
 	"projects/handlers"
 	"projects/repository"
 	service2 "projects/service"
@@ -38,7 +39,7 @@ func main() {
 
 	db, error := repository.ConnectDB(repository.Config{
 		Host:     viper.GetString("host"),
-		Port:     viper.GetString("db_port"),
+		Port:     viper.GetString("port_db"),
 		Username: viper.GetString("user"),
 		Password: viper.GetString("password"),
 		DBName:   viper.GetString("db_name"),

@@ -6,7 +6,9 @@ import (
 )
 
 const (
-	userTable = "users"
+	userTable        = "users"
+	transactionTable = "transactions"
+	reserveTable     = "reserve"
 )
 
 type Config struct {
