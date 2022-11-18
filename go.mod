@@ -56,6 +56,7 @@ require (
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/urfave/cli/v2 v2.3.0 // indirect
+	github.com/zhashkevych/go-sqlxmock v1.5.1 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	golang.org/x/crypto v0.2.0 // indirect
 	golang.org/x/sys v0.2.0 // indirect
